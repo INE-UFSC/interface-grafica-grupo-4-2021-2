@@ -33,10 +33,14 @@ class ClienteController:
                     self.__clientes[values['codigo']] = values['nome']
 
             elif event == 'Consultar':
-                tem_cliente = codigo in self.__clientes
+                tem_cliente = False
+                for i in self.__clientes.keys():
+                    if values['codigo'] == i:
+                        tem_cliente = True
+
                 if tem_cliente:
-                    cliente = self.__clientes[codigo]
-                    resultado = str(cliente)
+                    cliente = self.__clientes[values['codigo']]
+                    resultado = f'Nome: {cliente}, Código: {values["codigo"]}'
                 else:
                     resultado = "Não encontrado"
             
