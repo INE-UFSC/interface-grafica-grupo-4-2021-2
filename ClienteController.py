@@ -31,8 +31,12 @@ class ClienteController:
 
                 pass
             elif event == 'Consultar':
-                #FIX ME - implementar lógica de consulta
-                pass
+                tem_cliente = codigo in self.__clientes
+                if tem_cliente:
+                    cliente = self.__clientes[codigo]
+                    resultado = str(cliente)
+                else:
+                    resultado = "Não encontrado"
             
             if resultado != '':
                 dados = str(resultado)
