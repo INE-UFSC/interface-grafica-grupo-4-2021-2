@@ -23,7 +23,7 @@ class ClienteController:
                 for i in self.__clientes.keys():
                     if values['codigo'] == i:
                         repetido = True
-                numero = checar_numero(values['codigo'])
+                numero = self.__checar_numero(values['codigo'])
                 if repetido:
                     resultado = 'Usuário já existe'
                 elif not numero:
@@ -64,8 +64,9 @@ class ClienteController:
 
         raise LookupError
 
-    def chechar_numero(numero):
-        if isdeciamal(numero):
+    @staticmethod
+    def __checar_numero(numero):
+        if numero.isdecimal():
             return True
         else:
             return False 
