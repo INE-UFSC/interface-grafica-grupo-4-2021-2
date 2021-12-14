@@ -23,13 +23,15 @@ class ClienteController:
                 for i in self.__clientes.keys():
                     if values['codigo'] == i:
                         repetido = True
+                numero = checar_numero(values['codigo'])
                 if repetido:
                     resultado = 'Usuário já existe'
+                elif not numero:
+                    resultado = "Codigo deve ser um numero inteiro!"
                 else:
                     resultado = 'Usuário cadastrado com sucesso'
                     self.__clientes[values['codigo']] = values['nome']
 
-                pass
             elif event == 'Consultar':
                 tem_cliente = codigo in self.__clientes
                 if tem_cliente:
@@ -61,3 +63,9 @@ class ClienteController:
                 return key 
 
         raise LookupError
+
+    def chechar_numero(numero):
+        if isdeciamal(numero):
+            return True
+        else:
+            return False 
