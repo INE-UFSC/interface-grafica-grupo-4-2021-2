@@ -30,7 +30,7 @@ class ClienteController:
                     resultado = "Codigo deve ser um numero inteiro!"
                 else:
                     resultado = 'Usuário cadastrado com sucesso'
-                    self.__clientes[values['codigo']] = values['nome']
+                    self.adiciona_cliente(values['codigo'], values['nome'])
 
             elif event == 'Consultar':
                 tem_cliente = False
@@ -40,7 +40,7 @@ class ClienteController:
 
                 if tem_cliente:
                     cliente = self.__clientes[values['codigo']]
-                    resultado = f'Nome: {cliente}, Código: {values["codigo"]}'
+                    resultado = f'Nome: {cliente.nome}, Código: {cliente.codigo}'
                 else:
                     resultado = "Não encontrado"
             
