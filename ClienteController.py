@@ -19,7 +19,16 @@ class ClienteController:
             if event == sg.WIN_CLOSED:
                 rodando = False
             elif event == 'Cadastrar':
-                #FIX ME - implementar lógica de cadastro
+                repetido = False
+                for i in self.__clientes.keys():
+                    if values['codigo'] == i:
+                        repetido = True
+                if repetido:
+                    resultado = 'Usuário já existe'
+                else:
+                    resultado = 'Usuário cadastrado com sucesso'
+                    self.__clientes[values['codigo']] = values['nome']
+
                 pass
             elif event == 'Consultar':
                 #FIX ME - implementar lógica de consulta
