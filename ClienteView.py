@@ -9,9 +9,12 @@ class ClienteView():
 
     def tela_consulta(self):
         #FIX ME - implementar a GUI e colocar em self.__container
-        
-        self.__container = []
-        self.__window = sg.Window("Consulta de clientes", self.__container ,font=("Helvetica", 14))
+        linha0 = [sg.Text("Digite o código ou o nome do cliente e clique na ação desejada:")]
+        linha1 = [sg.Text("Nome: "), sg.InputText("", key='nome')]
+        linha2 = [sg.Text("Código"), sg.InputText("", key='codigo')]
+        linha3 = [sg.Button("Cadastrar"), sg.Button("Consultar")]
+        self.__container = [linha0, linha1, linha2, linha3]
+        self.__window = sg.Window("Consulta de clientes", self.__container, font=("Helvetica", 14))
 
     def mostra_resultado(self, resultado): 
         self.__window.Element('resultado').Update(resultado)
